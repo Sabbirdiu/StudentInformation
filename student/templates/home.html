@@ -1,0 +1,13 @@
+<h1>Hello world</h1>
+
+{% for s in stu %}
+{{s.stu_id}}
+{{s.name}}
+{{s.age}}
+{{s.sex}}
+{{s.father_Name}}
+{{s.mother_Mame}}
+{{s.last_Education}}
+{% empty %}
+<h1>Empty</h1>
+{% endfor %}
