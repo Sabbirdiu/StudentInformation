@@ -13,8 +13,10 @@
 {{s.age}}
 {{s.sex}}
 {{s.father_Name}}
-{{s.mother_Mame}}
+{{s.mother_Name}}
 {{s.last_Education}}
+<a  href="{% url 'update_view' s.id %}">Update</a>
+<a href="{% url 'delete_view' s.id %}">Delete</a>
 {% empty %}
 <h1>Empty</h1>
 {% endfor %}

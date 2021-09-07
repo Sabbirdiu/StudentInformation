@@ -35,8 +35,6 @@ def add_student(request):
 # update view for details
 def update_view(request, id):
 
-    
-
     obj = get_object_or_404(Student, id = id)
 
     form = studentform(request.POST or None, instance = obj)
@@ -49,3 +47,15 @@ def update_view(request, id):
         'form' : form
     }
     return render(request, "update_view.html", context)
+# delete view for details
+def delete_view(request, id):
+    context ={}
+    obj = get_object_or_404(Student, id = id)
+ 
+ 
+    if request.method =="POST":
+        # delete object
+        obj.delete()
+        return redirect("home")
+ 
+    return render(request, "delete_view.html", context)
