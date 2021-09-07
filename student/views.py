@@ -5,13 +5,16 @@ from django.http import  HttpResponseRedirect
 from django.contrib import messages
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import permission_required
-
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def home(request):
-    stu = Student.objects.all().order_by('stu_id')
-
+    stu = Student.objects.order_by('name')
+    paginator = Paginator(stu, 6)
+    page = request.GET.get('page')
+    paged_listings  = paginator.get_page(page)
+    
     context = {
-        'stu':stu
+        'listings':paged_listings,
     }
     return render(request,'home.html',context)
 @permission_required('auth.view_user')
