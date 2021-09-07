@@ -2,7 +2,6 @@ from django.shortcuts import render,redirect
 from .models import Student 
 from .forms import studentform
 from django.http import  HttpResponseRedirect
-  
 from django.contrib import messages
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import permission_required

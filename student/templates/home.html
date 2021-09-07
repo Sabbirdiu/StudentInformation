@@ -1,23 +1,105 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
 {% if messages %}
-<ul>
-    {% for message in messages %}
-    <li {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
-    {% endfor %}
-</ul>
-{% endif %}
-<a href="{% url 'add_student' %}">Add Student</a>
-<hr>
 
-{% for s in stu %}
-{{s.stu_id}}
-{{s.name}}
-{{s.age}}
-{{s.sex}}
-{{s.father_Name}}
-{{s.mother_Name}}
-{{s.last_Education}}
-<a  href="{% url 'update_view' s.id %}">Update</a>
-<a href="{% url 'delete_view' s.id %}">Delete</a>
-{% empty %}
-<h1>Empty</h1>
-{% endfor %}
+{% endif %}
+<div class="col-lg-12">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 ">
+                {% for message in messages %}
+                <div  class=" text-success message" >
+                     {{ message }} 
+                    <a href="#" class="del-msg">&times;</a>
+                </div>
+                {% endfor %}
+                <script>
+                    $(document).ready(function () {
+                        // messages timeout for 10 sec 
+                        setTimeout(function () {
+                            $('.message').toast('show');
+                        }, 10000); // <-- time in milliseconds, 1000 =  1 sec
+
+                        // // delete message
+                        // $('.del-msg').live('click', function () {
+                        //     $('.del-msg').parent().attr('style', 'display:none;');
+                        // })
+                    });
+                </script>
+                <div class="row">
+                    <div class="col-lg-12  ">
+                       
+                        <h4 style="text-align: center;">Students Information</h4>
+                    </div>
+                    <!-- <div class="col-lg-6  mb-5">
+                        <a href="{% url 'add_student' %}" class="btn btn-primary">Add New Student</a>
+                    </div> -->
+                    <!-- <div class="col-lg-6"></div> -->
+                   
+                </div>
+            </div>
+            <table class="table table-hover mt-4" style=" overflow-y:scroll; border-bottom:1px blue solid;">
+                <thead>
+                    <tr>
+                        <th scope="col">S.No</th>
+                        <th scope="col">Student ID</th>
+                        <th scope="col">Student Name</th>
+                        <th scope="col">Age</th>
+                        <th scope="col">Last Education</th>
+                        <th scope="col">Update</th>
+                        <th scope="col">Delete</th>
+                        <th scope="col">Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in stu %}
+                    <tr>
+                        <th scope="row">{{forloop.counter}}</th>
+                        <th scope="row">{{i.stu_id}}</th>
+                        <td>{{i.name}}</td>
+                        <td>{{i.age}}</td>
+                        <td>{{i.last_Education}}</td>
+                        <td><a  href="{% url 'update_view' i.id %}" type="button" class="btn btn-primary">
+                                <i class="fa fa-edit" aria-hidden="true"></i> Update
+                        </a></td>
+                        <td><a href="{% url 'delete_view' i.id %}" type="button" class="btn btn-danger">
+                                <i class="fa fa-delete" aria-hidden="true"></i> Delete
+                            </a></td>
+                        <td><button type="button" class="btn btn-info" data-toggle="modal"
+                                data-target="#demo{{i.id}}">
+                                <i class="fa fa-eye" aria-hidden="true"></i> View Details
+                            </button></td>
+                        {% comment %} <td> <a href=""> </a></td> {% endcomment %}
+                        <div class="modal" id="demo{{i.id}}">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title"> {{i.name}} Information</h4>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p> <b> Student Id </b>: {{i.stu_id}}</p>
+                                        <p> <b> Student Name </b>: {{i.name}}</p>
+                                        <p><b>Age </b>: {{i.age}}</p>
+                                        <p><b>sex</b>: {{i.sex}}</p>
+                                        <p><b>Student phone </b>: {{i.phone}}</p>
+                                        <p><b>Father Name </b>: {{i.father_Name}}</p>
+                                        <p><b>Mother Name </b> : {{i.mother_Name}}</p>
+                                        <p><b>Last Education </b> : {{i.last_Education}}</p>
+                                      
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <nav aria-label="Page navigation example text-center">
+            </nav>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

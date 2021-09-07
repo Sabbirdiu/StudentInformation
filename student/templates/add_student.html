@@ -1,5 +1,20 @@
-<form action="." method="post">
-    {% csrf_token %}
-    {{stu}}
-    <button>Add Student</button>
-</form>
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+{% load crispy_forms_tags %}
+<div class="container content-section  ">
+    <h1 style="text-align: center;" class="mt-2" >Add Student</h1>
+    <form method="POST" action="." >
+   <div class="container mt-3">
+       {% csrf_token %}
+
+{{stu|crispy}}
+
+<div class="form-group">
+    <button class="btn btn-outline-info" type="submit">Add Student</button>
+</div></div>
+       
+    </form>
+</div>
+
+{% endblock content %}
