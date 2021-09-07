@@ -4,7 +4,7 @@ from .forms import studentform
 from django.http import  HttpResponseRedirect
   
 from django.contrib import messages
-
+from django.shortcuts import get_object_or_404
 
 
 def home(request):
@@ -31,3 +31,21 @@ def add_student(request):
         'stu':stu
     }    
     return render(request, 'add_student.html', context) 
+
+# update view for details
+def update_view(request, id):
+
+    
+
+    obj = get_object_or_404(Student, id = id)
+
+    form = studentform(request.POST or None, instance = obj)
+
+    if form.is_valid():
+        form.save()
+        return redirect('home')
+
+    context = {
+        'form' : form
+    }
+    return render(request, "update_view.html", context)
