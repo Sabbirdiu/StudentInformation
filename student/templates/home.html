@@ -5,7 +5,8 @@
     {% endfor %}
 </ul>
 {% endif %}
-<h1>Hello world</h1>
+<a href="{% url 'add_student' %}">Add Student</a>
+<hr>
 
 {% for s in stu %}
 {{s.stu_id}}
