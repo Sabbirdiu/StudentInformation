@@ -1,20 +1,57 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-{% load crispy_forms_tags %}
-<div class="container content-section  ">
-    <h1 style="text-align: center;" class="mt-2" >Add Student</h1>
-    <form method="POST" action="." >
-   <div class="container mt-3">
-       {% csrf_token %}
+{% load crispy_forms_tags %} 
+<style>
+    .student {
+        margin-top: 50px;
+        margin-bottom: 100px;
+    }
 
-{{stu|crispy}}
+    .forms {
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+        padding-top: 30px;
+        padding-bottom: 30px;
+        border-bottom: 2px blue solid;
+    }
 
-<div class="form-group">
-    <button class="btn btn-outline-info" type="submit">Add Student</button>
-</div></div>
-       
-    </form>
+ 
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+
+    ::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+</style>
+<div class="col-lg-12 student">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h4>Add Student Information</h4> <br>
+            </div>
+            <div class="col-lg-6 mx-auto forms">
+                <form action="." method="post">
+                    {% csrf_token %}
+                    {{stu|crispy}}
+                    <button class="btn btn-outline-info" type="submit">Add Student</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
+
+
 
 {% endblock content %}
