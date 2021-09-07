@@ -5,6 +5,7 @@ from django.http import  HttpResponseRedirect
   
 from django.contrib import messages
 from django.shortcuts import get_object_or_404
+from django.contrib.auth.decorators import permission_required
 
 
 def home(request):
@@ -14,7 +15,7 @@ def home(request):
         'stu':stu
     }
     return render(request,'home.html',context)
-
+@permission_required('auth.view_user')
 def add_student(request):
     stu = studentform()
     if request.method=='POST':
@@ -33,6 +34,7 @@ def add_student(request):
     return render(request, 'add_student.html', context) 
 
 # update view for details
+@permission_required('auth.view_user')
 def update_view(request, id):
 
     obj = get_object_or_404(Student, id = id)
@@ -48,6 +50,7 @@ def update_view(request, id):
     }
     return render(request, "update_view.html", context)
 # delete view for details
+@permission_required('auth.view_user')
 def delete_view(request, id):
     context ={}
     obj = get_object_or_404(Student, id = id)
