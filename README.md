@@ -1,22 +1,25 @@
 # StudentInformation
 
+# How to setup
+
+   git clone https://github.com/Sabbirdiu/StudentInformation.git
+   cd StudentInformation
+   pip install -r requirements.txt
+   python manage.py makemigrations
+   python manage.py migrate
+   python manage.py runserver
+   python manage.py runserver
+
+# Admin Passwrod
+
+   username:walton
+   password:walton
+
 ## Used Tech Stack
 
 1. Django
 2. Sqlite
 3. Bootstrap
-
-# How to setup
-
-git clone https://github.com/Sabbirdiu/StudentInformation.git
-cd StudentInformation
-pip install requirements.txt
-python manage.py runserver
-
-# Admin Passwrod
-
-username:walton
-password:walton
 
 This project all about the student information system built by Python Django with bootstrap. Admin can store student information, Manage students using this application.
 
