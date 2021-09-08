@@ -4,6 +4,7 @@ Live: [Demo](https://waltonstudentsinfo.herokuapp.com/)
 # To run the app
 
   ` git clone https://github.com/Sabbirdiu/StudentInformation.git`
+  
    `cd StudentInformation`
   ` pip install -r requirements.txt`
   ` python manage.py makemigrations`
