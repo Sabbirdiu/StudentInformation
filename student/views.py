@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import permission_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def home(request):
-    stu = Student.objects.order_by('name')
+    stu = Student.objects.order_by('stu_id')
     paginator = Paginator(stu, 6)
     page = request.GET.get('page')
     paged_listings  = paginator.get_page(page)
