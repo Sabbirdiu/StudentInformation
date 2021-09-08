@@ -4,17 +4,22 @@ Live: [Demo](https://waltonstudentsinfo.herokuapp.com/)
 # To run the app
 
   ` git clone https://github.com/Sabbirdiu/StudentInformation.git`
-  
+
    `cd StudentInformation`
+
   ` pip install -r requirements.txt`
+
   ` python manage.py makemigrations`
+
    `python manage.py migrate`
+
   ` python manage.py runserver`
-   `python manage.py runserver`
+
 
 # Admin Passwrod
 
    `username:walton`
+   
   ` password:walton`
 
 ## Used Tech Stack
